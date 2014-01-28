@@ -1262,7 +1262,7 @@ nav {  /*NOTE to get this styled similarly for large screens, just make width:50
 }  
 
 nav a {
-    color:#fff;
+    color:#000;
     display:inline-block;
     width:100px;
     text-align:left;
@@ -1276,7 +1276,7 @@ nav ul {
     height: 40px;  
 }  
 nav li {  
-	background-color:#90AAC0;
+background-color:#90AAC0;
     display: inline;  
     float: left;  
 }  
@@ -1373,7 +1373,7 @@ nav {  /*NOTE to get this styled similarly for large screens, just make width:50
 }  
 
 nav a {
-    color:#fff;
+    color:#000;
     display:inline-block;
     width:100px;
     text-align:left;
@@ -1544,7 +1544,7 @@ nav {  /*NOTE to get this styled similarly for large screens, just make width:50
 }  
 
 nav a {
-    color:#fff;
+    color:#000;
     display:inline-block;
     width:70px;
     text-align:left;
