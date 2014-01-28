@@ -1144,6 +1144,11 @@ img {border: none;}
 	padding-top:4em;
 	z-index:;
 }
+.dot {
+  position:absolute;
+  margin-top:-.25em;
+  margin-left:-.2em;
+}
 .hero_intro {
 	position:relative;
 	text-align:center;
@@ -1220,6 +1225,12 @@ img {border: none;}
 	background-color:rgba(255,255,255,1.0);
 }
 
+#blog {
+  width:100%;
+  height:auto;
+  padding:1em 0 3em 0;
+  background-color:rgba(255, 255, 255, 1.0);
+}
 #getintouch {
 	width:100%;
 	height:auto;
@@ -1722,7 +1733,7 @@ h2 {
         position:relative;
     }
     nav li a {
-        border-bottom:1px solid rgba(255,255,255,.4);
+        border-bottom:1px solid rgba(0,0,0,.15);
     }
     nav a {
         text-align:center;
