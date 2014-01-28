@@ -1047,7 +1047,7 @@ p {
 
 header {
   width:100%;
-  height:50px;
+  height:60px;
   background: #fff repeat-x left top;
   z-index:10000;
 }
@@ -1059,7 +1059,7 @@ header.headroom {
   transition: all .2s ease-in-out;
 }
 
-header.headroom--unpinned {top: -50px;}
+header.headroom--unpinned {top: -60px;}
 header.headroom--pinned {top: 0;}
 
 
@@ -1271,7 +1271,7 @@ nav a {
 }
 nav ul {  
     padding: 0;  
-    margin: 0 auto;  
+    margin: .5em auto;  
     width: 500px;  
     height: 40px;  
 }  
@@ -1349,12 +1349,12 @@ nav a#pull {
 }
 header {
   width:100%;
-  height:50px;
+  height:60px;
   background: #fff repeat-x left top;
   z-index:100000;
 }
 header.headroom {position: fixed;top: 0;left: 0;right: 0;transition: all .2s ease-in-out;}
-header.headroom--unpinned {top: -50px;}
+header.headroom--unpinned {top: -60px;}
 header.headroom--pinned {top: 0;}
 
 
@@ -1382,7 +1382,7 @@ nav a {
 }
 nav ul {  
     padding: ;  
-    margin: 0 auto;  
+    margin: .5em auto;  
     width: 500px;  
     height: 40px;  
 }  
@@ -1520,12 +1520,12 @@ h3 {
 
 header {
   width:100%;
-  height:50px;
+  height:60px;
   background: #fff repeat-x left top;
   z-index:10000;
 }
 header.headroom {position: fixed;top: 0;left: 0;right: 0;transition: all .2s ease-in-out;}
-header.headroom--unpinned {top: -65px;}
+header.headroom--unpinned {top: -60px;}
 header.headroom--pinned {top: 0;}
 
 
@@ -1553,7 +1553,7 @@ nav a {
 }
 nav ul {  
     padding:0em;  
-    margin: 0 auto;  
+    margin: .5em 1em;  
     width: 350px;  
     height: 65px;  
 }  
