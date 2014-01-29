@@ -1110,7 +1110,8 @@ h2 {
 @media only screen and (max-width: 30em) /* 480px */ {
 
 .hero {height:auto;
-    padding-bottom:1.5em;}
+    padding-bottom:1.5em;
+margin-top:4.5em}
 .logo {
     position:absolute;
     margin:0;
