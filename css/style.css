@@ -1285,7 +1285,7 @@ nav a {
 }
 nav ul {  
     padding: 0;  
-    margin: .5em auto;  
+    margin: 1em auto;  
     width: 500px;  
     height: 40px;  
 }  
@@ -1396,7 +1396,7 @@ nav a {
 }
 nav ul {  
     padding: ;  
-    margin: .5em auto;  
+    margin: 1em auto;  
     width: 500px;  
     height: 40px;  
 }  
@@ -1567,7 +1567,7 @@ nav a {
 }
 nav ul {  
     padding:0em;  
-    margin: .5em 1em auto auto;  
+    margin: 1em 1em auto auto;  
     width: 350px;  
     height: 65px;  
 }  
