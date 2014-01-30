@@ -417,7 +417,7 @@ img {border: none;}
 	text-align:center;
 	height:auto;
 	padding:15px;
-  font-size:.9375em;
+  font-size:1em;
   line-height:1.5em;
 	background-color:transparent;
 	font-family:"Georgia", "Times New Roman", serif;
@@ -529,7 +529,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:.9375em;
+  font-size:1em;
 }
 
 .column_threes {
@@ -546,7 +546,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:.9375em;
+  font-size:1em;
 }
  /* END CONTENT */
  #blog_callout {
@@ -664,7 +664,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:.9375em;
+  font-size:1em;
 }
 
 .column_threes {
@@ -681,7 +681,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:.9375em;
+  font-size:1em;
 }
 
 .column_twos {
@@ -698,7 +698,7 @@ nav a#pull {
   margin:1em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:.9375em;
+  font-size:1em;
   clear:both;
 }
 .last {
@@ -848,7 +848,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:.9375em;
+  font-size:1em;
 }
 .column_ones {
   float:left;
@@ -864,7 +864,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:.9375em;
+  font-size:1em;
 }
 #who_box {
   width:100%;
@@ -1022,7 +1022,7 @@ h2 {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:.9375em;
+  font-size:1em;
 }
 
 #who_box {
