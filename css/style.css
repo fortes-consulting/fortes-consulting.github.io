@@ -335,7 +335,7 @@ img {border: none;}
 	top:0;
 	left:0;
 	margin:-4em auto 0 auto;
-  padding-top:65px;
+  	padding-top:65px;
 	z-index:-1000;
 }
 .hero_text {
@@ -419,8 +419,8 @@ img {border: none;}
 	text-align:center;
 	height:auto;
 	padding:15px;
-  font-size:1em;
-  line-height:1.5em;
+ 
+  	line-height:1.5em;
 	background-color:transparent;
 	font-family:"Georgia", "Times New Roman", serif;
 	color:rgba(0,0,0,1.0);
@@ -448,12 +448,13 @@ img {border: none;}
 footer {
 	width:100%;
 	height:45px;
+	margin-bottom:1em;
 	padding:0 0 1em 0;
 	background-color:rgba(255,255,255,1.0);
 	color:rgba(0,0,0,1.0);
 	text-align:center;
 	line-height:1.75;
-	font-size:1em;
+	
 	text-transform:uppercase;
 	font-family:"heroregular", sans-serif !important;
 }
@@ -469,7 +470,6 @@ footer {
 nav {  /*NOTE to get this styled similarly for large screens, just make width:50%; and float:right; */
     height: 50px;  
     float:right;
-    right:;
     font-size: 11pt;  
     font-family: 'Helvetica Neue', Arial, sans-serif; 
     text-transform:uppercase; 
@@ -531,7 +531,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:1em;
+
 }
 
 .column_threes {
@@ -548,7 +548,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:1em;
+
 }
  /* END CONTENT */
  #blog_callout {
@@ -666,7 +666,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:1em;
+  
 }
 
 .column_threes {
@@ -683,7 +683,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:1em;
+ 
 }
 
 .column_twos {
@@ -700,7 +700,7 @@ nav a#pull {
   margin:1em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:1em;
+  
   clear:both;
 }
 .last {
@@ -850,7 +850,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:1em;
+  
 }
 .column_ones {
   float:left;
@@ -866,7 +866,7 @@ nav a#pull {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:1em;
+  
 }
 #who_box {
   width:100%;
@@ -1024,8 +1024,7 @@ h2 {
   margin:2em auto 0 auto;
   text-align:center;
   font-family:"Georgia", "Times New Roman", serif;
-  font-size:1em;
-}
+ 
 
 #who_box {
   width:100%;
