@@ -525,7 +525,7 @@ nav a#pull {
   float:left;
   margin:3em 1.25em 4em 1.25em;
   padding:0;
-  height:auto;
+  height:100%;
   width:260px;
   max-width:260px;
 }
