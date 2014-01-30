@@ -242,7 +242,8 @@ a {
   text-decoration:none;}
 
 p {
-  font-size:1em;
+  font-size:1em !important;
+  font-family:"Georgia", serif;
   line-height:1.5em;
   text-align:center;
 }
