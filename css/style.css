@@ -1049,11 +1049,39 @@ h2 {
 
 }
 
+@media only screen and (max-width: 30em) /* 480px */ {
+
+
+.logo {
+    position:absolute;
+    margin:0 auto;
+    height:auto;
+    padding:;
+  }
+
+  .hero_text {
+  font-size:2.2em;
+  margin-bottom:.5em;
+}
+
+.hero_intro {
+  font-size:1em;
+}
+
+
+
+
+
+
+
+}
+
+
 
 @media only screen and (max-width: 30em) /* 480px */ {
 
 .hero {
-	position:absolute;
+
 	height:auto;
     	padding-bottom:1.5em;
     	margin:0 auto;
