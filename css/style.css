@@ -1049,25 +1049,52 @@ h2 {
 
 }
 
+
 @media only screen and (max-width: 30em) /* 480px */ {
 
+.hero {
+	position:absolute;
+	height:auto;
+    	padding-bottom:1.5em;
+    	margin:0 auto;
+	margin-top:0em
+}
 
 .logo {
     position:absolute;
-    margin:0 auto;
+    margin:0;
+    margin-left:-10%;
+    width:200px;
     height:auto;
-    padding:;
-  }
+    padding:.25em;
+}
 
   .hero_text {
-  font-size:2.2em;
+  font-size:2.5em;
   margin-bottom:.5em;
 }
+
+.hero_intro {
+  font-size:1em;
+}
+
 .dot {
   display:none;
 }
-.hero_intro {
-  font-size:1em;
+
+h2 {
+  font-size:2.25em;
+}
+
+.contact {
+  max-width:75em;
+  margin:0 auto;
+  text-align:center;
+  font-size:1.25em;
+}
+
+.contact li {
+  margin:.25em;
 }
 
 .social {
@@ -1083,19 +1110,6 @@ h2 {
   -o-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
-
-}
-
-
-.contact {
-  max-width:75em;
-  margin:0 auto;
-  text-align:center;
-  font-size:1.25em;
-}
-
-.contact li {
-  margin:.25em;
 }
 
 .social a:active {
@@ -1105,34 +1119,7 @@ h2 {
   -moz-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
-}
 
-@media only screen and (max-width: 30em) /* 480px */ {
-
-.hero {height:auto;
-    padding-bottom:1.5em;
-margin-top:0em}
-.logo {
-    position:absolute;
-    margin:0;
-    margin-left:-10%;
-    width:200px;
-    height:auto;
-    padding:.25em;
-  }
-
-  .hero_text {
-  font-size:2.5em;
-  margin-bottom:.5em;
-}
-
-.hero_intro {
-  font-size:1em;
-}
-
-h2 {
-  font-size:2.25em;
-}
 }
 
 
