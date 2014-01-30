@@ -450,12 +450,6 @@ footer {
 	height:auto;
 	padding:0 0 1em 0;
 	background-color:rgba(255,255,255,1.0);
-	color:rgba(0,0,0,1.0);
-	text-align:center;
-	line-height:1.75;
-	
-	text-transform:uppercase;
-	
 }
 
 #footer_logo {
@@ -467,6 +461,10 @@ footer {
 #footer p {
 	font-family:"heroregular", sans-serif !important;
 	font-size:.875em;
+	text-transform:uppercase;
+	color:rgba(0,0,0,1.0);
+	text-align:center;
+	
 }
 
 /* BEGIN NAVIGATION */
