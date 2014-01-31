@@ -328,13 +328,13 @@ img {border: none;}
 	background-image:url("../images/golfball_in_sun_cropped.png");
 	background-repeat:no-repeat;
 	background-attachment:scroll;
-	background-position:center top;
+	background-position:center bottom;
 	background-clip: border-box;
 	background-origin:padding-box;
 	background-size:cover;
 	top:0;
 	left:0;
-	margin:-6em auto 0 auto;
+	margin:-4em auto 0 auto;
   	padding-top:65px;
 	z-index:-1000;
 }
