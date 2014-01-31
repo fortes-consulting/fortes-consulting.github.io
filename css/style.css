@@ -337,7 +337,7 @@ img {border: none;}
 	margin:-4em auto 0 auto;
   	padding-top:65px;
 	z-index:-1000;
-	box-shadow:inset 0px 0px 20px rgba(0,0,0,1.0);
+	box-shadow:inset 0px 0px 20px rgba(0,0,0,.5);
 }
 .hero_text {
 	position:relative;
