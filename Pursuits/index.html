@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html ng-app="prsts" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link href="style.css" rel="Stylesheet" type="text/css" />
+	<!--<link href='http://fonts.googleapis.com/css?family=Copse' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>-->
+	<title>Pursuits | What's your Pursuit?</title>
+</head>
+
+<body>
+	<div id="page-wrap">
+		<header id="main-header" class="shadow">
+			<img id="pursuits-logo" src="" />
+			<h1 class="uppercase">Pursuits</h1>
+			
+			<nav>	
+				<ul class="uppercase">
+					<li><a>Dashboard</a></li>
+					<li><a>Schedule</a></li>
+					<li><a>Contacts</a></li>
+					<li><a>Help</a></li>
+				</ul>
+			</nav>
+				
+			<form id="search-box" action="">
+				<input type="text" name="search" placeholder="Search" value="" />
+				<input type="image" name"search-button" value="" src="images/search-button.png" alt="Search Button" height=20px width="auto" />
+			</form>
+
+			<div id="user-info" ng-controller="UserController as userCtrl">
+				<img id="user-avatar" ng-src="{{userCtrl.user.image}}" alt-text="User Avatar" height=30px width=30px />
+				<div>
+					<h3>{{userCtrl.user.firstName + " " + userCtrl.user.lastName}}</h3>
+					<p>{{userCtrl.user.email}}</p>
+				</div>
+			</div>
+		</header> <!-- end #mainHeader -->
+
+		<header id="sub-header">
+			<div id="add-option" class="button">
+				<p class="uppercase">Add Option</p>
+			</div>
+			<div id="add-cat" class="button">
+				<p class="uppercase">Add Category</p>
+			</div>
+
+			<div class="drop-menu">	
+				<p class="uppercase">Current Pursuit:</p>
+				<form ng-controller="PursuitsController as prstsCtrl">
+					<select class="uppercase">
+						<option ng-repeat="pursuit in prstsCtrl.currentPursuits" value="{{pursuit}}">{{pursuit}}</option>
+					</select>
+				</form>
+			</div>
+			
+			<div class="drop-menu">	
+				<p class="uppercase">Arrange by:</p>
+				<form>
+					<select class="uppercase">
+						<option value="Job Interview Stage">Job Interview Stage</option>
+						<option value="Industry">Industry</option>
+					</select>
+				</form>
+			</div>
+
+		</header> <!-- end #subHeader -->
+		
+		<p id="suggested-button" class="uppercase suggested-toggle shadow">Suggested Jobs</p>
+		<aside class="fly-menu hidden">
+			<p class="uppercase suggested-toggle">Suggested Jobs</p>	
+			<section id="sug-jobs" ng-controller="SuggestedController as sugCtrl">
+				<article class="sug-post shadow" ng-repeat="sugJob in sugCtrl.sugJobs">
+					<p class="co-info"><img class="co-logo" ng-src="{{sugJob.image}}" alt-text="Company Logo" height=35px width=35px />{{sugJob.coName}}<br />{{sugJob.coLocation}}</p>
+					<p class="job-title">{{sugJob.jobTitle}}</p>
+				</article>
+			</section>
+
+			<p class="uppercase">Suggested Articles</p>
+			<section id="sug-articles" ng-controller="ArticleController as artCtrl">
+				<article class="sug-post" ng-repeat="article in artCtrl.arts">
+					<p class="article-title">{{article.title}}</p>
+				</article>
+			</section>
+		</aside> <!-- end flyMenu -->
+		
+		<main id="category-wrap" ng-controller="CategoryController as catCtrl" sv-root >
+			<section class="category shadow" ng-repeat="category in catCtrl.cats">
+				<h2>{{category.name}}</h2>
+				<div class="option-wrap" sv-part="category.options">
+					<article class="option shadow" ng-repeat="option in category.options" sv-element ng-mouseenter="hover = true" ng-mouseleave="hover = false">
+						<section class="co-info"><img class="co-logo" ng-src="{{option.image}}" alt-text="Company Logo" height=35px width=35px />{{option.coName}}<br />{{option.coLocation}}</section>
+						<section class="job-title">{{option.jobTitle}}</section>
+						<section class="notes">{{option.notes}}</section>
+						<img class="details-button hidden" src="" alt-text="Details Button" height=20px width=20px ng-class = "{hidden: !hover}" ng-click="details = true" />
+					</article> <!-- end .option -->
+				</div>
+			</section> <!-- end .category -->
+			
+			<section id="details-menu" class="popup shadow hidden" ng-controller="TabController as tabCtrl">
+				<h2>Job Title <!-- {{option.name}} --></h2>
+				<ul id="tabs">
+					<a href ng-click="tabCtrl.setTab(1)">
+						<li ng-class="{active: tabCtrl.isSet(1)}">Notes</li>
+					</a>
+					<a href ng-click="tabCtrl.setTab(2)">
+						<li ng-class="{active: tabCtrl.isSet(2)}">Contacts</li>
+					</a>
+					<a href ng-click="tabCtrl.setTab(3)">
+						<li ng-class="{active: tabCtrl.isSet(3)}">Tasks</li>
+					</a>
+					<a href ng-click="tabCtrl.setTab(4)">
+						<li ng-class="{active: tabCtrl.isSet(4)}">Expenses</li>
+					</a>
+					<a href ng-click="tabCtrl.setTab(5)">
+						<li ng-class="{active: tabCtrl.isSet(5)}">Files</li>
+					</a>
+				</ul>
+
+				<section ng-show="tabCtrl.isSet(1)">
+					<form>
+						<p>{option.notes}</p>
+						<p>
+		      				<label for="job-notes">
+		        			<textarea name="job-notes" rows="8" cols="22"></textarea>
+		        			</label>
+		        		</p>
+
+		       			<p>
+		   					<input type="submit" value="Save" />
+		   					<br />
+		       			</p>
+					</form>
+				</section>
+				<section ng-show="tabCtrl.isSet(2)">
+					<form>
+						<p>{option.contact.name}</p>
+						<p>
+		      				<label for="job-notes">
+		        			<textarea name="job-notes" rows="8" cols="22"></textarea>
+		        			</label>
+		        		</p>
+
+		       			<p>
+		   					<input type="submit" value="Save" />
+		   					<br />
+		       			</p>
+					</form>
+				</section>
+				<section ng-show="tabCtrl.isSet(3)">
+					<article>3</article>
+				</section>
+				<section ng-show="tabCtrl.isSet(4)">
+					<article>4</article>
+				</section>
+				<section ng-show="tabCtrl.isSet(5)">
+					<article>5</article>
+				</section>
+			</section>
+		</main> <!-- end #categoryWrap -->
+	</div> <!-- end #pageWrap -->
+
+	<div class="overlay hidden"></div>
+	
+	<section id="add-option-form" class="popup shadow hidden">
+		<h2>Add an Option</h2>
+		<form name="addOptionForm" ng-controller="AddOptionController as AOCtrl" ng-submit="addOptionForm.$valid && AOCtrl.addOption()" novalidate>
+			<!-- <p>
+      			<label for="url">
+        			<span>Url: </span>
+        			<input ng-model="AOCtrl.option.url" type="url" name="url" required />
+        		</label>
+        	</p> -->
+			<p>
+      			<label for="co-name">
+        			<span>Company Name:* </span>
+        			<input ng-model="AOCtrl.option.coName" type="text" name="co-name" />
+        		</label>
+        	</p>
+        	<p>
+      			<label for="co-location">
+        			<span>Company Location:* </span>
+        			<input ng-model="AOCtrl.option.coLocation" type="text" name="co-location" />
+        		</label>
+        	</p>
+        	<p>
+      			<label for="job-title">
+        			<span>Title: </span>
+        			<input ng-model="AOCtrl.option.jobTitle" type="text" name="job-title" required />
+        		</label>
+        	</p>
+        	<p>
+      			<label for="job-notes">
+        			<span>Notes: </span>
+        			<textarea ng-model="AOCtrl.option.jobNotes" name="job-notes" rows="4" cols="22"></textarea>
+        		</label>
+        	</p>
+			<p>
+      			<label for="category">
+        			<span>Category:* </span>
+		        	<select ng-controller="CategoryController as catCtrl" ng-model="AOCtrl.option.category" title="category" required>
+						<option ng-repeat="category in catCtrl.cats" name="category" value="{{category.name}}">{{category.name}}</option>
+					</select>
+        		</label>
+        	</p>
+
+        	<p ng-hide="addOptionForm.$valid">
+        		Please complete all required(*) fields.
+        	</p>
+        	<p>
+      			<input type="submit" value="Save" />
+      			<br />
+        	</p>
+		</form>
+	</section> <!-- end #add-option-form -->
+	
+	<section id="add-cat-form" class="popup shadow hidden">
+		<h2>Add a Category</h2>
+		<form name="addCatForm" ng-controller="AddCatController as ACCtrl" ng-submit="addCatForm.$valid && ACCtrl.addCat()" novalidate>
+			<p>
+      			<label for="cat-name">
+        			<span>Category Name: </span>
+        			<input ng-model="ACCtrl.category.name" type="text" name="cat-name" required />
+        		</label>
+        	</p>
+        	
+        	<p>
+      			<input type="submit" value="Save" />
+      			<br />
+        	</p>
+		</form>
+	</section>
+
+		<!--<form name="addCatForm" ng-controller="AddCatController as ACCtrl" ng-submit="addCatForm.$valid && ACCtrl.addCat()" novalidate>
+			<p>
+      			<label for="cat-name">
+        			<span>Category Name: </span>
+        			<input ng-model="ACCtrl.category.name" type="text" name="cat-name" required />
+        		</label>
+        	</p>
+        	
+        	<p>
+      			<input type="submit" value="Save" />
+      			<br />
+        	</p>
+		</form>-->
+
+
+	<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="scripts/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/angular-sortable-view.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script>
+</body>
+
+</html>

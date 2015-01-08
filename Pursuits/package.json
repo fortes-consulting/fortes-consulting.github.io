@@ -1,0 +1,22 @@
+{
+  "name": "pursuits",
+  "version": "1.0.0",
+  "description": "pursuits prototype",
+  "main": "index.js",
+  "scripts": {
+    "test": "console.log(\"Hello world\");"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joezdeng/pursuits.git"
+  },
+  "author": "Joe Deng",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joezdeng/pursuits/issues"
+  },
+  "homepage": "https://github.com/joezdeng/pursuits",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
+}

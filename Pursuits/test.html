@@ -1,0 +1,19 @@
+<!doctype html>
+<html ng-app="prsts">
+<head>
+	<link href="test.css" rel="Stylesheet" type="text/css" />
+	<style>.sv-helper{position: fixed !important;z-index: 99999;margin: 0 !important;}.sv-candidate{}.sv-placeholder{}.sv-sorting-in-progress{-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}.sv-visibility-hidden{visibility: hidden !important;opacity: 0 !important;}</style>
+	<script type="text/javascript" src="scripts/angular.min.js"></script>
+	<script type="text/javascript" src="scripts/angular-sortable-view.min.js"></script>
+	<script type="text/javascript" src="scripts/app.js"></script></head>
+<body>
+	<!--<input type="text" ng-model="name"></input>-->
+	<h2>Hello {{"world"}}</h2>
+	<div ng-controller="TestController as test" sv-root sv-part="test.names" sv-on-sort="onSorted(test.names);" sv-on-start="onStarted($part, $item, $index)" sv-on-stop="onStopped($part, $item, $index)">
+		<div class="container" ng-repeat="alias in test.names" sv-element>
+			<p>{{alias.name}}</p>
+		</div>
+	</div>
+	
+</body>
+</html>
