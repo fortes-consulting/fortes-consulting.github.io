@@ -1,6 +1,7 @@
 (function($scope) {
 	var app = angular.module('prsts', ['angular-sortable-view']);
 
+	//Pull data controllers
 	app.controller('CategoryController', function() {
 		this.cats = categories;
 	});
@@ -21,6 +22,35 @@
 		this.currentPursuits = pursuits;
 	});
 
+	app.controller('ContactsController', function() {
+		//Associate contacts
+		this.contacts = contacts;
+
+		//Push into contacts
+		this.contact = {};
+
+		this.addContact = function() {
+			contacts.push(this.contact);
+
+			this.contact = {};
+		};
+	});
+
+	app.controller('ExpensesController', function() {
+		//Associate expenses
+		this.expenses = expenses;
+
+		//Push into expenses
+		this.expense = {};
+
+		this.addExpense = function() {
+			expenses.push(this.expense);
+
+			this.expense = {};
+		};
+	});
+
+	//Push data controllers
 	app.controller('AddOptionController', function() {
 		this.option = {};
 
@@ -55,7 +85,8 @@
 		};
 	});
 
-	app.controller('TabController', function() {
+	app.controller('ViewController', function() {
+		//Details menu tabs
 		this.tab = 1;
 
 		this.setTab = function(newValue) {
@@ -65,284 +96,251 @@
 		this.isSet = function(tabName) {
 			return this.tab === tabName;
 		};
+
+		//Main views
+		this.view = 1;
+		
+		this.setView = function(newValue) {
+			this.view = newValue;
+		};
+
+		this.viewIsSet = function(viewName) {
+			return this.view === viewName;
+		};
+	});
+
+	app.controller('DetailsPlaceholderController', function() {
+		this.details = detailsPlaceholder;
+
+		//Add note
+		this.note = {};
+
+		this.addNote = function() {
+			this.details.notes.push(this.note);
+
+			this.note = {};
+		};
+
+		//Add optionContact
+		this.optionContact = {};
+
+		this.addOC = function() {
+			this.details.optionContacts.push(this.optionContact);
+			contacts.push(this.optionContact);
+
+			this.optionContact = {};
+		};
+
+		//Add task
+		this.task = {};
+
+		this.addTask = function() {
+			this.details.tasks.push(this.task);
+			schedule.push(this.task);
+
+			this.task = {};
+		};
+
+		//Add expense
+		this.expense = {};
+
+		this.addExpense = function() {
+			this.details.expenses.push(this.expense);
+			expenses.push(this.expense);
+
+			this.expense = {};
+		};
+
+		//Add file
+		this.file = {};
+
+		this.addFile = function() {
+			this.details.files.push(this.file);
+			files.push(this.file);
+
+			this.file = {};
+		};
+		
 	});
 
 
-	var categories = [
-		{
-			name:'Stage 1',
-			options: [
-				{
-					coName:'Company A',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+	var categories = [{
+			name:'Potential',
+			options: [{
+					coName:'RECSOLU',
+					coLocation:'Chicago, IL',
+					jobTitle:'iOS Mobile Developer',
+					notes:['Spoke to Will on 1/11'],
 					image:''
-				},
-				{
-					coName:'Company B',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'RECSOLU',
+					coLocation:'Chicago, IL',
+					jobTitle:'Ruby Engineer',
+					notes:['Spoke to Will on 1/11'],
 					image:''
-				},
-				{
-					coName:'Company C',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'Brad\'s Deals',
+					coLocation:'Chicago, IL',
+					jobTitle:'Sr Developer',
+					notes:['Met recruiter at Builtin Brews', 'Recommended by Alex'],
 					image:''
-				},
-				{
-					coName:'Company D',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'Shiftgig',
+					coLocation:'Chicago, IL',
+					jobTitle:'Mobile Developer - Android',
+					notes:['Contact John for more info'],
 					image:''
-				},
-				{
-					coName:'Company E',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'SpotHero',
+					coLocation:'Chicago, IL',
+					jobTitle:'Senior Developer - Backend',
+					notes:['Primarily noSQL-based'],
 					image:''
-				},
-				{
-					coName:'Company F',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'SpotHero',
+					coLocation:'Chicago, IL',
+					jobTitle:'Senior Developer - Frontend',
+					notes:['Would want to see portfolio'],
 					image:''
-				},
-				{
-					coName:'Company G',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'KnowledgeHound',
+					coLocation:'Chicago, IL',
+					jobTitle:'Senior Developer',
+					notes:['Required 4+ yrs experience'],
 					image:''
-				}
-			]
-		},
-		
-		{
-			name:'Stage 2',
-			options: [
-				{
-					coName:'Company H',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+			}]
+		}, {
+			name:'Applied',
+			options: [{
+					coName:'Trustwave',
+					coLocation:'Chicago, IL',
+					jobTitle:'Test Engineer',
+					notes:['Spoke to Mary on 1/3','Applied 1/9'],
 					image:''
-				},
-				{
-					coName:'Company I',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'Braintree',
+					coLocation:'Chicago, IL',
+					jobTitle:'Front-end Developer',
+					notes:['Pair programming','Eric is passing resume'],
 					image:''
-				},
-				{
-					coName:'Company J',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'Sertifi',
+					coLocation:'Chicago, IL',
+					jobTitle:'Front-End Developer',
+					notes:['Spoke with COO','Looking for UX-savvy developer'],
 					image:''
-				},
-				{
-					coName:'Company K',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'SMS Assist',
+					coLocation:'Chicago, IL',
+					jobTitle:'.NET Developer - IT',
+					notes:['Met with CTO at recruiting event','1+ yrs experience required'],
 					image:''
-				}
-			]
-		},
-		
-		{
-			name:'Stage 3',
-			options: [
-				{
-					coName:'Company L',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+			}]
+		}, {
+			name:'Interviewing',
+			options: [{
+					coName:'Iris Mobile',
+					coLocation:'Chicago, IL',
+					jobTitle:'Web Developer',
+					notes:['Looking for fulls-stack','First-round interview finished 1/10'],
 					image:''
-				},
-				{
-					coName:'Company M',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'Power Reviews',
+					coLocation:'Chicago, IL',
+					jobTitle:'Software Developer',
+					notes:['Requires prior UX experience','Second-round interview scheduled 1/14'],
 					image:''
-				},
-				{
-					coName:'Company N',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'CSG International',
+					coLocation:'Chicago, IL',
+					jobTitle:'Web Developer',
+					notes:['Needs to build database structure','First-round interview scheduled 1/13'],
 					image:''
-				},
-				{
-					coName:'Company O',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+			}]
+		}, {
+			name:'Waiting for Offer',
+			options: [{
+					coName:'Sprout Social',
+					coLocation:'Chicago, IL',
+					jobTitle:'iOS Software Engineer',
+					notes:['Met recruiter at Technori Pitch','Interviews completed 1/5','Followed up after 1 week'],
 					image:''
-				},
-				{
-					coName:'Company P',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'ParkWhiz',
+					coLocation:'Chicago, IL',
+					jobTitle:'Frontend Developer',
+					notes:['Submitted sample work','First-round interview finished 1/3','Second-round interview finished 1/10'],
 					image:''
-				},
-				{
-					coName:'Company Q',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+			}]
+		}, {
+			name:'Negotiating',
+			options: [{
+					coName:'Arc TG',
+					coLocation:'Chicago, IL',
+					jobTitle:'Senior Developer',
+					notes:['Needs managament experience','Interview finished 1/4','Negotiating salary'],
 					image:''
-				},
-				{
-					coName:'Company R',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+				}, {
+					coName:'Peapod',
+					coLocation:'Chicago, IL',
+					jobTitle:'Software Engineer, Java',
+					notes:['Met through Alex','Interview completed 12/20','Red flag for culture'],
 					image:''
-				}
-			]
-		},
-		
-		{
-			name:'Stage 4',
-			options: [
-				{
-					coName:'Company S',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
+			}]
+		}, {
+			name:'Finalizing',
+			options: [{
+					coName:'closerlook, inc.',
+					coLocation:'Chicago, IL',
+					jobTitle:'.Net Developer',
+					notes:['Submitted application online','First-round interview finished 12/13','Second-round interview completed 12/20','Looking to start next week instead of in three weeks'],
 					image:''
-				},
-				{
-					coName:'Company T',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
-					image:''
-				},
-				{
-					coName:'Company U',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
-					image:''
-				}
-			]
-		},
-		
-		{
-			name:'Stage 5',
-			options: [
-				{
-					coName:'Company V',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
-					image:''
-				},
-				{
-					coName:'Company W',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
-					image:''
-				}
-			]
-		},
-		
-		{
-			name:'Stage 6',
-			options: [
-				{
-					coName:'Company X',
-					coLocation:'City, State',
-					jobTitle:'Job Title',
-					notes:'Brief Description',
-					image:''
-				}
-			]
-		}
-	];
+			}]
+	}];
 
-	var articles = [
-		{
-			title:'Article A',
-			href:''
-		},
-		{
-			title:'Article B',
-			href:''
-		},
-		{
-			title:'Article C',
-			href:''
-		},
-		{
-			title:'Article D',
-			href:''
-		},
-		{
-			title:'Article E',
-			href:''
-		},
-		{
-			title:'Article F',
-			href:''
-		},
-		{
-			title:'Article G',
-			href:''
-		},
-	];
+	var articles = [{
+			title:'Delivering Continuous Development continuously',
+			href:'http://www.theguardian.com/info/developer-blog/2015/jan/05/delivering-continuous-delivery-continuously'
+		}, {
+			title:'Building a scalable geofencing API on Google\'s App Engine',
+			href:'http://googledevelopers.blogspot.com/2014/12/building-scalable-geofencing-api-on.html'
+		}, {
+			title:'~199 slides on Front-end Tooling Workflows',
+			href:'http://addyosmani.com/blog/199-slides-on-front-end-tooling-workflows/'
+		}, {
+			title:'Functional Android',
+			href:'http://www.theguardian.com/info/developer-blog/2014/dec/11/functional-android'
+		}, {
+			title:'JavaScript Application Architecture On The Road To 2015',
+			href:'http://addyosmani.com/blog/architecture-on-the-road-to-2015/'
+	}];
 
-	var suggestedJobs = [
-		{
-			coName:'Company AA',
-			coLocation:'City, State',
-			jobTitle:'Job Title',
+	var suggestedJobs = [{
+			coName:'AKTA',
+			coLocation:'Chicago, IL',
+			jobTitle:'Android Engineer',
 			image:''
-		},
-		{
-			coName:'Company BB',
-			coLocation:'City, State',
-			jobTitle:'Job Title',
+		}, {
+			coName:'SingleHop',
+			coLocation:'Chicago, IL',
+			jobTitle:'Software Engineer (PHP/Python)',
 			image:''
-		},
-		{
-			coName:'Company CC',
-			coLocation:'City, State',
-			jobTitle:'Job Title',
+		}, {
+			coName:'GoHealth',
+			coLocation:'Chicago, IL',
+			jobTitle:'Software Engineer',
 			image:''
-		},
-		{
-			coName:'Company DD',
-			coLocation:'City, State',
-			jobTitle:'Job Title',
+		}, {
+			coName:'Orbitz Worldwide',
+			coLocation:'Chicago, IL',
+			jobTitle:'Sr. Software Engineer',
 			image:''
-		},
-		{
-			coName:'Company EE',
-			coLocation:'City, State',
-			jobTitle:'Job Title',
+		}, {
+			coName:'FastModel Sports',
+			coLocation:'Chicago, IL',
+			jobTitle:'Software Engineer',
 			image:''
-		},
-		{
-			coName:'Company FF',
-			coLocation:'City, State',
-			jobTitle:'Job Title',
-			image:''
-		},
-	];
+	}];
 
 	var user = {
 		firstName:'John',
@@ -357,15 +355,78 @@
 		'Pro Bono Work'
 	];
 
+	var detailsPlaceholder = {
+		notes:[{content:'test note'},{content:'test note 2'}],
+		optionContacts:[{
+			name:'Contact Person',
+			email:'someemail@gmail.com',
+			company:'Some Company',
+			role:'Recruiter',
+			profile:'Likes cookies'
+		}],
+		tasks:[{
+			name:'Email recruiter',
+			date:"2014-12-26T06:00:00.000Z",
+			info:'Send resume and cover letter'
+		}],
+		expenses:[{
+			name:'Cab ride',
+			date:"2014-12-27T06:00:00.000Z",
+			amount:11.23
+		}],
+		files:[{
+			name:'Resume',
+			link:''
+		}],
+		tags:[{name:'agency'},{name:'The Loop'}]
+	};
 
+	var contacts = [{
+			name:'Alex Kahn',
+			email:'a.kahn@gmail.com',
+			company:'Lightbank',
+			role:'Developer',
+			profile:['Geek culture']
+		}, {
+			name:'Eric Mrak',
+			email:'eric.mrak@braintree.com',
+			company:'Braintree',
+			role:'Developer',
+			profile:['Hikes']
+		}, {
+			name:'Will Murphy',
+			email:'will@recsolu.com',
+			company:'RECSOLU',
+			role:'Talent Acquisition',
+			profile:['Likes cooking']
+	}];
+
+	var schedule = [
+	];
+
+	var expenses = [{
+			name:'Cab ride',
+			date:"2014-12-27T06:00:00.000Z",
+			amount:11.23
+		},{
+			name:'Cab ride',
+			date:"2015-01-03T06:00:00.000Z",
+			amount:8.43
+	}];
+
+	var files = [
+	];
+
+	var tags = [
+	];
 
 })();
 
 
 $(document).ready(function() {
 	//Suggested Sidebar toggle
-	$('#suggested-button, .fly-menu p').click(function() {
-		$('.fly-menu').toggleClass('hidden');
+	$('#suggested-button, .fly-menu p:first-child').click(function() {
+		$('.fly-menu, #suggested-button').toggleClass('hidden');
 
 	    });
 

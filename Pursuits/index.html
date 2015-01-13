@@ -10,22 +10,33 @@
 </head>
 
 <body>
-	<div id="page-wrap">
+	<div id="page-wrap" ng-controller="ViewController as viewCtrl">
 		<header id="main-header" class="shadow">
 			<img id="pursuits-logo" src="" />
-			<h1 class="uppercase">Pursuits</h1>
+			<h1 class="uppercase">Pursuits<sup>TM</sup></h1>
 			
-			<nav>	
+			<nav >	
 				<ul class="uppercase">
-					<li><a>Dashboard</a></li>
-					<li><a>Schedule</a></li>
-					<li><a>Contacts</a></li>
-					<li><a>Help</a></li>
+					<a href ng-click="viewCtrl.setView(1)">
+						<li ng-class="{active: viewCtrl.viewIsSet(1)}">Dashboard</li>
+					</a>
+					<a href ng-click="viewCtrl.setView(2)">
+						<li ng-class="{active: viewCtrl.viewIsSet(2)}">Schedule</li>
+					</a>
+					<a href ng-click="viewCtrl.setView(3)">
+						<li ng-class="{active: viewCtrl.viewIsSet(3)}">Contacts</li>
+					</a>
+					<a href ng-click="viewCtrl.setView(4)">
+						<li ng-class="{active: viewCtrl.viewIsSet(4)}">Expenses</li>
+					</a>
+					<a href ng-click="viewCtrl.setView(5)">
+						<li ng-class="{active: viewCtrl.viewIsSet(5)}">Help</li>
+					</a>
 				</ul>
 			</nav>
 				
 			<form id="search-box" action="">
-				<input type="text" name="search" placeholder="Search" value="" />
+				<input type="text" name="search" placeholder="Search not yet functional" value="" />
 				<input type="image" name"search-button" value="" src="images/search-button.png" alt="Search Button" height=20px width="auto" />
 			</form>
 
@@ -38,7 +49,7 @@
 			</div>
 		</header> <!-- end #mainHeader -->
 
-		<header id="sub-header">
+		<header class="sub-header" ng-show="viewCtrl.viewIsSet(1)">
 			<div id="add-option" class="button">
 				<p class="uppercase">Add Option</p>
 			</div>
@@ -65,9 +76,15 @@
 				</form>
 			</div>
 
-		</header> <!-- end #subHeader -->
+		</header> <!-- end Dashboard #subHeader -->
+
+		<header class="sub-header" ng-show="viewCtrl.viewIsSet(3)">	
+		</header> <!-- end Contacts #subHeader -->
+
+		<header class="sub-header" ng-show="viewCtrl.viewIsSet(4)">
+		</header> <!-- end Contacts #subHeader -->
 		
-		<p id="suggested-button" class="uppercase suggested-toggle shadow">Suggested Jobs</p>
+		<p id="suggested-button" class="uppercase suggested-toggle">Suggested Jobs</p>
 		<aside class="fly-menu hidden">
 			<p class="uppercase suggested-toggle">Suggested Jobs</p>	
 			<section id="sug-jobs" ng-controller="SuggestedController as sugCtrl">
@@ -80,85 +97,361 @@
 			<p class="uppercase">Suggested Articles</p>
 			<section id="sug-articles" ng-controller="ArticleController as artCtrl">
 				<article class="sug-post" ng-repeat="article in artCtrl.arts">
-					<p class="article-title">{{article.title}}</p>
+					<a href="{{article.href}}"><p class="article-title">{{article.title}}</p></a>
 				</article>
 			</section>
 		</aside> <!-- end flyMenu -->
 		
-		<main id="category-wrap" ng-controller="CategoryController as catCtrl" sv-root >
+		<main id="category-wrap" ng-show="viewCtrl.viewIsSet(1)" ng-controller="CategoryController as catCtrl" sv-root>
 			<section class="category shadow" ng-repeat="category in catCtrl.cats">
 				<h2>{{category.name}}</h2>
 				<div class="option-wrap" sv-part="category.options">
 					<article class="option shadow" ng-repeat="option in category.options" sv-element ng-mouseenter="hover = true" ng-mouseleave="hover = false">
-						<section class="co-info"><img class="co-logo" ng-src="{{option.image}}" alt-text="Company Logo" height=35px width=35px />{{option.coName}}<br />{{option.coLocation}}</section>
+						<section class="co-info">
+							<img class="co-logo" ng-src="{{option.image}}" alt-text="Company Logo" height=35px width=35px />{{option.coName}}<br />{{option.coLocation}}
+						</section>
 						<section class="job-title">{{option.jobTitle}}</section>
-						<section class="notes">{{option.notes}}</section>
-						<img class="details-button hidden" src="" alt-text="Details Button" height=20px width=20px ng-class = "{hidden: !hover}" ng-click="details = true" />
+						<section class="notes"><p ng-repeat="note in option.notes">{{note}};<br /></p></section>
+						<img class="details-button hidden" src="" alt-text="Details Button" height=20px width=20px ng-class ="{hidden: !hover}" ng-click="details = true" />
 					</article> <!-- end .option -->
 				</div>
 			</section> <!-- end .category -->
 			
-			<section id="details-menu" class="popup shadow hidden" ng-controller="TabController as tabCtrl">
+			<section id="details-menu" class="popup shadow hidden" ng-controller="ViewController as viewCtrl">
 				<h2>Job Title <!-- {{option.name}} --></h2>
 				<ul id="tabs">
-					<a href ng-click="tabCtrl.setTab(1)">
-						<li ng-class="{active: tabCtrl.isSet(1)}">Notes</li>
+					<a href ng-click="viewCtrl.setTab(1)">
+						<li ng-class="{active: viewCtrl.isSet(1)}">Notes</li>
 					</a>
-					<a href ng-click="tabCtrl.setTab(2)">
-						<li ng-class="{active: tabCtrl.isSet(2)}">Contacts</li>
+					<a href ng-click="viewCtrl.setTab(2)">
+						<li ng-class="{active: viewCtrl.isSet(2)}">Contacts</li>
 					</a>
-					<a href ng-click="tabCtrl.setTab(3)">
-						<li ng-class="{active: tabCtrl.isSet(3)}">Tasks</li>
+					<a href ng-click="viewCtrl.setTab(3)">
+						<li ng-class="{active: viewCtrl.isSet(3)}">Tasks</li>
 					</a>
-					<a href ng-click="tabCtrl.setTab(4)">
-						<li ng-class="{active: tabCtrl.isSet(4)}">Expenses</li>
+					<a href ng-click="viewCtrl.setTab(4)">
+						<li ng-class="{active: viewCtrl.isSet(4)}">Expenses</li>
 					</a>
-					<a href ng-click="tabCtrl.setTab(5)">
-						<li ng-class="{active: tabCtrl.isSet(5)}">Files</li>
+					<a href ng-click="viewCtrl.setTab(5)">
+						<li ng-class="{active: viewCtrl.isSet(5)}">Files</li>
+					</a>
+					<a href ng-click="viewCtrl.setTab(6)">
+						<li ng-class="{active: viewCtrl.isSet(6)}">Tags</li>
 					</a>
 				</ul>
 
-				<section ng-show="tabCtrl.isSet(1)">
-					<form>
-						<p>{option.notes}</p>
-						<p>
-		      				<label for="job-notes">
-		        			<textarea name="job-notes" rows="8" cols="22"></textarea>
-		        			</label>
-		        		</p>
+				<section id="form-container" ng-controller="DetailsPlaceholderController as DPCtrl">
+					<section id="notes-tab" ng-show="viewCtrl.isSet(1)">
+						<form name="addNoteForm" ng-submit="addNoteForm.$valid && DPCtrl.addNote()" novalidate>
+							<section class="existing">
+								<p class="details-note" ng-repeat="note in DPCtrl.details.notes">{{note.content}}</p>
+							</section>
+							<section class="add">
+								<p>
+				      				<label for="option-notes">
+				      					<span>Add Notes: </span>
+				        				<input ng-model="DPCtrl.note.content" type="text" name="option-notes" placeholder="" required />
+				        			</label>
+				        		</p>
 
-		       			<p>
-		   					<input type="submit" value="Save" />
-		   					<br />
-		       			</p>
-					</form>
-				</section>
-				<section ng-show="tabCtrl.isSet(2)">
-					<form>
-						<p>{option.contact.name}</p>
-						<p>
-		      				<label for="job-notes">
-		        			<textarea name="job-notes" rows="8" cols="22"></textarea>
-		        			</label>
-		        		</p>
+				       			<p class="save-button">
+				   					<input type="submit" value="Save" />
+				   					<br />
+				       			</p>
+				       		</section>
+						</form>
+					</section>
+					<section id="contacts-tab" ng-show="viewCtrl.isSet(2)">
+						<form name="addOptionContactForm" ng-submit="addOptionContactForm.$valid && DPCtrl.addOC()" novalidate>
+							<section class="existing">
+								<article class="details-contact" ng-repeat="contact in DPCtrl.details.optionContacts">
+									<h4>{{contact.name}}</h4>
+									<p>{{contact.email}}</p>
+									<p>{{contact.company}}, {{contact.role}}</p>
+									<p>{{contact.profile}}</p>
+								</article>
+							</section>
+							<section class="add">
+								<p>
+				      				<label for="contact-name">
+				        				<span>Contact Name:* </span>
+	        							<input ng-model="DPCtrl.optionContact.name" type="text" name="contact-name" required />
+				        			</label>
+				        		</p>
+				        		<p>
+				      				<label for="contact-email">
+				        				<span>Email: </span>
+	        							<input ng-model="DPCtrl.optionContact.email" type="email" name="contact-email" />
+				        			</label>
+				        		</p>
+				        		<p>
+				      				<label for="contact-company">
+				        				<span>Company: </span>
+	        							<input ng-model="DPCtrl.optionContact.company" type="text" name="contact-company" />
+				        			</label>
+				        		</p>
+				        		<p>
+				      				<label for="contact-role">
+				        				<span>Role: </span>
+	        							<input ng-model="DPCtrl.optionContact.role" type="text" name="contact-role" />
+				        			</label>
+				        		</p>
+				        		<p>
+				      				<label for="contact-profile">
+				        			<span>Profile: </span>
+				        			<input ng-model="DPCtrl.optionContact.profile" type="text" name="contact-profile" />
+				        			<!-- <textarea ng-model="DPCtrl.contact.profile" name="contact-profile" rows="4" cols="22"></textarea>-->
+				        			</label>
+				        		</p>
 
-		       			<p>
-		   					<input type="submit" value="Save" />
-		   					<br />
-		       			</p>
-					</form>
-				</section>
-				<section ng-show="tabCtrl.isSet(3)">
-					<article>3</article>
-				</section>
-				<section ng-show="tabCtrl.isSet(4)">
-					<article>4</article>
-				</section>
-				<section ng-show="tabCtrl.isSet(5)">
-					<article>5</article>
+
+
+				       			<p class="save-button">
+				   					<input type="submit" value="Save" />
+				   					<br />
+				       			</p>
+				       		</section>
+						</form>
+					</section>
+					<section id="tasks-tab" ng-show="viewCtrl.isSet(3)">
+						<form name="addTaskForm" ng-submit="addTaskForm.$valid && DPCtrl.addTask()" novalidate>
+							<section class="existing">
+								<article class="details-task" ng-repeat="task in DPCtrl.details.tasks">
+									<h4>{{task.name}}</h4>
+									<p>Due Date: {{task.date | date:"MMM d, y"}}</p>
+									<p>{{task.info}}</p>
+								</article>
+							</section>
+							<section class="add">
+								<p>
+				      				<label for="option-task-name">
+				        				<span>Task:* </span>
+	        							<input ng-model="DPCtrl.task.name" type="text" name="option-task-name" required />
+				        			</label>
+				        		</p>
+				        		<p>
+				      				<label for="option-task-date">
+				        				<span>Due Date: </span>
+	        							<input ng-model="DPCtrl.task.date" type="date" name="option-task-date" />
+				        			</label>
+				        		</p>
+				        		<p>
+				      				<label for="option-task-info">
+				        			<span>Info: </span>
+				        			<input ng-model="DPCtrl.task.info" type="text" name="option-task-info" />
+				        			<!--<textarea name="option-task-info" rows="4" cols="22"></textarea>-->
+				        			</label>
+				        		</p>
+
+
+
+				       			<p class="save-button">
+				   					<input type="submit" value="Save" />
+				   					<br />
+				       			</p>
+				       		</section>
+						</form>
+					</section>
+					<section id="expenses-tab" ng-show="viewCtrl.isSet(4)">
+						<form name="addExpensesForm" ng-submit="addExpensesForm.$valid && DPCtrl.addExpense()" novalidate>
+							<section class="existing">
+								<article class="details-expense" ng-repeat="expense in DPCtrl.details.expenses">
+									<h4>{{expense.name}}</h4>
+									<p>{{expense.date | date:"MMM d, y"}}</p>
+									<p>{{expense.amount | currency}}</p>
+								</article>
+							</section>
+							<section class="add">
+								<p>
+				      				<label for="expense-name">
+				        				<span>Expense:* </span>
+	        							<input ng-model="DPCtrl.expense.name" type="text" name="expense-name" required />
+				        			</label>
+				        		</p>
+				        		<p>
+				      				<label for="expense-date">
+				        				<span>Date: </span>
+	        							<input ng-model="DPCtrl.expense.date" type="date" name="expense-date" />
+				        			</label>
+				        		</p>
+				        		<p>
+				      				<label for="expense-amount">
+				        			<span>Amount:* </span>
+				        			<input ng-model="DPCtrl.expense.amount" type="number" name="expense-amount" required />
+				        			</label>
+				        		</p>
+
+
+				       			<p class="save-button">
+				   					<input type="submit" value="Save" />
+				   					<br />
+				       			</p>
+				       		</section>
+						</form>
+					</section>
+					<section id="files-tab" ng-show="viewCtrl.isSet(5)">
+						<form name="addFileForm" ng-submit="addFileForm.$valid && DPCtrl.addFile()" novalidate>
+							<section class="existing">
+								<article class="details-file" ng-repeat="file in DPCtrl.details.files">
+									<h4>{{file.name}}</h4>
+								</article>
+							</section>
+							<section class="add">
+								<p>
+				      				<label for="file-name">
+				      					<span>File Name: </span>
+				        				<input ng-model="DPCtrl.file.name" type="text" name="file-name" placeholder="" required />
+				        			</label>
+				        		</p>
+
+				       			<p class="save-button">
+				   					<input type="submit" value="Save" />
+				   					<br />
+				       			</p>
+				       		</section>
+						</form>
+					</section>
+					<section id="tags-tab" ng-show="viewCtrl.isSet(6)">
+						<form name="addTagForm" ng-submit="addTagForm.$valid && DPCtrl.addTag()" novalidate>
+							<section class="existing">
+								<article class="details-tag">
+									<p><span ng-repeat="tag in DPCtrl.details.tags">{{tag.name}}</span></p>
+								</article>
+							</section>
+							<section class="add">
+								<p>
+				      				<label for="tag-name">
+				      					<span>Tag: </span>
+				        				<input ng-model="DPCtrl.tag.name" type="text" name="tag-name" placeholder="" required />
+				        			</label>
+				        		</p>
+
+				       			<p class="save-button">
+				   					<input type="submit" value="Save" />
+				   					<br />
+				       			</p>
+				       		</section>
+						</form>
+					</section>
 				</section>
 			</section>
 		</main> <!-- end #categoryWrap -->
+
+		<main id="contacts-wrap" ng-show="viewCtrl.viewIsSet(3)" ng-controller="ContactsController as contactsCtrl">
+			<section id="contacts-container">
+				<form name="addContactTable" ng-submit="addContactTable.$valid && contactsCtrl.addContact()" novalidate>
+					<table>
+						<colgroup>
+							<col span="1"></col>
+							<col span="1"></col>
+							<col span="1"></col>
+							<col span="1"></col>
+							<col span="1"></col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Company</th>
+								<th>Role</th>
+								<th>Profile</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="contact in contactsCtrl.contacts">
+								<td>{{contact.name}}</td>
+								<td>{{contact.email}}</td>
+								<td>{{contact.company}}</td>
+								<td>{{contact.role}}</td>
+								<td><p ng-repeat="profileNote in contact.profile">{{profileNote}}</p></td>
+							</tr>
+							<tr id="add-contacts-table-form">
+								<td>
+									<label for="contact-name">
+										<input ng-model="contactsCtrl.contact.name" type="text" name="contact-name" placeholder="Add new contact..." required />
+										<span>*</span>
+									</label>
+								</td>
+								<td>
+									<label for="contact-email">
+										<input ng-model="contactsCtrl.contact.email" type="email" name="contact-email" placeholder="" />
+									</label>
+								</td>
+								<td>
+									<label for="contact-company">
+										<input ng-model="contactsCtrl.contact.company" type="text" name="contact-company" placeholder="" />
+									</label>
+								</td>
+								<td>
+									<label for="contact-role">
+										<input ng-model="contactsCtrl.contact.role" type="text" name="contact-role" placeholder="" />
+									</label>
+								</td>
+								<td>
+									<label for="contact-profile">
+										<input ng-model="contactsCtrl.contact.profile" type="text" name="contact-profile" placeholder="" />
+									</label>
+								</td>
+								<td>
+					   				<input type="submit" value="Save" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</section>
+		</main>
+
+		<main id="expenses-wrap" ng-show="viewCtrl.viewIsSet(4)" ng-controller="ExpensesController as expensesCtrl">
+			<section id="expenses-container">
+				<form name="addExpenseTable" ng-submit="addExpenseTable.$valid && expensesCtrl.addExpense()" novalidate>
+					<table>
+						<colgroup>
+							<col span="1"></col>
+							<col span="1"></col>
+							<col span="1"></col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Expense</th>
+								<th>Amount</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="expense in expensesCtrl.expenses">
+								<td>{{expense.date | date:"MMM d, y"}}</td>
+								<td>{{expense.name}}</td>
+								<td>{{expense.amount | currency}}</td>
+							</tr>
+							<tr id="add-expenses-table-form">
+								<td>
+									<label for="expense-date">
+										<input ng-model="expensesCtrl.expense.date" type="date" name="expense-date" placeholder="" />
+									</label>
+								</td>
+								<td>
+									<label for="expense-name">
+										<input ng-model="expensesCtrl.expense.name" type="text" name="expense-name" placeholder="Add new expense..." required />
+									</label>
+									<span>*</span>
+								</td>
+								<td>
+									<label for="expense-amount">
+										<input ng-model="expensesCtrl.expense.amount" type="number" name="expense-amount" placeholder="" required />
+									</label>
+									<span>*</span>
+								</td>
+
+								<td>
+					   				<input type="submit" value="Save" />
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</form>
+			</section>
+		</main>
 	</div> <!-- end #pageWrap -->
 
 	<div class="overlay hidden"></div>
@@ -174,26 +467,26 @@
         	</p> -->
 			<p>
       			<label for="co-name">
-        			<span>Company Name:* </span>
-        			<input ng-model="AOCtrl.option.coName" type="text" name="co-name" />
+        			<span>Company Name: </span>
+        			<input ng-model="AOCtrl.option.coName" type="text" name="co-name" size="30" />
         		</label>
         	</p>
         	<p>
       			<label for="co-location">
-        			<span>Company Location:* </span>
-        			<input ng-model="AOCtrl.option.coLocation" type="text" name="co-location" />
+        			<span>Company Location: </span>
+        			<input ng-model="AOCtrl.option.coLocation" type="text" name="co-location" size="30" />
         		</label>
         	</p>
         	<p>
       			<label for="job-title">
-        			<span>Title: </span>
-        			<input ng-model="AOCtrl.option.jobTitle" type="text" name="job-title" required />
+        			<span>Title:* </span>
+        			<input ng-model="AOCtrl.option.jobTitle" type="text" name="job-title" size="30" required />
         		</label>
         	</p>
         	<p>
       			<label for="job-notes">
         			<span>Notes: </span>
-        			<textarea ng-model="AOCtrl.option.jobNotes" name="job-notes" rows="4" cols="22"></textarea>
+        			<textarea ng-model="AOCtrl.option.jobNotes" name="job-notes" rows="4" cols="32"></textarea>
         		</label>
         	</p>
 			<p>
@@ -221,7 +514,7 @@
 			<p>
       			<label for="cat-name">
         			<span>Category Name: </span>
-        			<input ng-model="ACCtrl.category.name" type="text" name="cat-name" required />
+        			<input ng-model="ACCtrl.category.name" type="text" name="cat-name" size="30" required />
         		</label>
         	</p>
         	
