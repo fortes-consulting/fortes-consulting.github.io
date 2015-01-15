@@ -14,7 +14,6 @@ body {
 	font-size:10px;
 	font-family:'Lato', Calibri, sans-serif;
 	color:#333333;
-	/*background-color:#e04006;*/
 }
 
 #page-wrap {
@@ -75,9 +74,8 @@ nav .active {
 	display:inline-block;
 }
 
-#pursuits-logo 
-	background-color:#f63;
-	width:40px;
+#pursuits-logo {
+	width:auto;
 	height:40px;
 	vertical-align: text-bottom;
 	margin-left:5em;
@@ -90,29 +88,34 @@ h1 {
 }
 
 sup {
-	font-size:0.1em;
-	font-weight:normal;
-}
-
-#main-header li {
-	display:inline-block;
-	font-size:2em;
-	margin:0.5em;
-}
-
-#search-box {
-	margin-left:3em;
-}
-
-#search-box input {
-	vertical-align:text-bottom;
+	font-size:0.6em;
+	font-weight:lighter;
 }
 
 #user-info {
 	margin:1em;
-	position:absolute;
-	right:0.5em;
-	top:0.5em;
+	float:right;
+}
+
+#primary-nav {
+	float:right;
+	margin:1em;
+}
+
+#primary-nav li {
+	display:inline-block;
+	font-size:1.5em;
+	margin:0.5em;
+}
+
+#search-box {
+	float:right;
+	margin:1.5em;
+	margin-right:3em;
+}
+
+#search-box input {
+	vertical-align:text-bottom;
 }
 
 #user-info > * {
@@ -122,6 +125,8 @@ sup {
 #user-avatar {
 	vertical-align:text-bottom;
 	margin-right:1em;
+	height:30px;
+	width:30px;
 }
 
 h3 {
@@ -129,7 +134,7 @@ h3 {
 }
 
 .sub-header{
-	font-size:1.5em;
+	font-size:1.25em;
 	background-color:#c3c3c3;
 	height:3.2em;
 }
@@ -157,7 +162,7 @@ h3 {
 }
 
 .button:first-child {
-	margin-left:3em;
+	margin-left:4em;
 }
 
 .drop-menu {
@@ -178,13 +183,13 @@ h3 {
 #suggested-button {
 	font-size:1.5em;
 	position:absolute;
-	top:4.499em;
-	right:7em;
+	top:56px;
+	right:0;
 	background-color:#fff;
 	padding:0.5em 1em;
-	border-bottom-right-radius:5px;
 	border-bottom-left-radius:5px;
 	box-shadow:1px 2px 6px -4px #8d8d8d;
+	font-weight:bold;
 }
 
 .suggested-toggle {
@@ -206,28 +211,29 @@ h3 {
 	background-color:#fff;
 	font-size:1.5em;
 	position:absolute;
-	top:4.499em;
+	top:56px;
 	right:0;
-	height:calc(100% - 4.499em);
-	height:-o-calc(100% - 4.499em); /* opera */
-	height:-webkit-calc(100% - 4.499em); /* chrome, safari */
-	height:-moz-calc(100% - 4.499em); /* firefox */
+	height:calc(100% - 62px);
+	height:-o-calc(100% - 62px); /* opera */
+	height:-webkit-calc(100% - 62px); /* chrome, safari */
+	height:-moz-calc(100% - 62px); /* firefox */
 	width:auto;
-	border-left:1px solid #8d8d8d;
+	border-left:1px solid #ababab;
 	background-color:#c3c3c3;
 }
 
 .fly-menu > p {
 	padding:0.5em 1em;
+	text-align:right;
+	font-weight:bold;
 }
 
 #sug-jobs, #sug-articles {
-	height:calc((100% - 4.5em) / 2);
-	height:-o-calc((100% - 4.5em) / 2); /* opera */
-	height:-webkit-calc((100% - 4.5em) / 2); /* chrome, safari */
-	height:-moz-calc((100% - 4.5em) / 2); /* firefox */
-	overflow-y:scroll;
-	
+	height:calc((100% - 62px) / 2);
+	height:-o-calc((100% - 62px) / 2); /* opera */
+	height:-webkit-calc((100% - 62px) / 2); /* chrome, safari */
+	height:-moz-calc((100% - 62px) / 2); /* firefox */
+	overflow-y:auto;
 }
 
 .sug-post {
@@ -243,14 +249,25 @@ h3 {
 	margin-top:0;
 }
 
-.co-logo {
-	float:left;
+.co-logo-container {
+	width:35px;
+	height:35px;
 	display:inline-block;
+	float:left;
+	position:relative;
 	margin-right:0.25em;
+
+}
+
+.co-logo {
+	display:block;
 	width:35px;
 	height:auto;
 	max-height:35px;
-
+	margin:auto;
+	position:absolute;
+	top:0;
+	bottom:0;
 }
 
 .job-title, .article-title {
@@ -260,10 +277,10 @@ h3 {
 }
 
 main {
-	height:calc(100% - 11.7em);
-	height:-o-calc(100% - 11.7em); /* opera */
-	height:-webkit-calc(100% - 11.7em); /* chrome, safari */
-	height:-moz-calc(100% - 11.7em); /* firefox */
+	height:calc(100% - 96px);
+	height:-o-calc(100% - 96px); /* opera */
+	height:-webkit-calc(100% - 96px); /* chrome, safari */
+	height:-moz-calc(100% - 96px); /* firefox */
 	background-color:#f5f5f5;
 	overflow-y:auto;
 }
@@ -291,7 +308,7 @@ main {
 }
 
 h2 {
-	font-size:2.5em;
+	font-size:2em;
 	text-align:center;
 	padding:0.5em;
 	font-family:'Bitter', serif;
@@ -316,16 +333,22 @@ h2 {
 	font-size:1.5em;
 }
 
-.sug-post, .option {
-	border:1px solid #c3c3c3;
+.sug-post, .option. .category {
+	border:1px solid #ababab;
+}
+
+.spacer {
+	font-size:1.25em;
 }
 
 .details-button {
 	position:absolute;
-	top:0.5em;
-	right:0.5em;
+	bottom:0.25em;
+	right:0.25em;
 	background-color:#f63;
 	cursor:pointer;
+	height:20px;
+	width:20px;
 }
 
 .notes p {
@@ -335,10 +358,6 @@ h2 {
 
 .ng-invalid.ng-dirty {
 	/*border-color:red;*/
-}
-
-.ng-valid.ng-dirty {
-	/*border-color:green;*/
 }
 
 .overlay {
@@ -395,7 +414,7 @@ h2 {
 }
 
 #form-container {
-	height:24em;
+	height:25em;
 }
 
 #details-menu > section {
@@ -433,6 +452,10 @@ h2 {
 	background-color:#c3c3c3;
 }
 
+#notes-tab, #contacts-tab, #tasks-tab, #expenses-tab, #files-tab, #tags-tab {
+	position:relative;
+}
+
 .existing, .add {
 	display:inline-block;
 	margin:0;
@@ -446,8 +469,10 @@ h2 {
 }
 
 .add {
-	float:right;
 	width:12em;
+	position:absolute;
+	top:0;
+	right:0;
 }
 
 .add textarea {
@@ -465,6 +490,10 @@ h2 {
 
 .details-contact p, .details-task p, .details-expense p, .details-file p {
 	margin-bottom:0;
+}
+
+.details-contact span {
+	display:inline-block;
 }
 
 .details-tag span {
