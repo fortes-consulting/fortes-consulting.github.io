@@ -12,7 +12,7 @@
 
 <body ng-controller="PursuitsController as prstsCtrl">
 	<div id="page-wrap" ng-controller="ViewController as viewCtrl">
-		<header id="main-header" class="shadow">
+		<header id="main-header">
 			<img id="pursuits-logo" src="images/pursuits-logo.png" />
 			<h1 class="uppercase">Pursuits<sup>TM</sup></h1>
 
@@ -61,7 +61,7 @@
 			<div class="drop-menu">	
 				<p class="uppercase">Current Pursuit:</p>
 				<form>
-					<select class="uppercase">
+					<select>
 						<option ng-repeat="pursuit in prstsCtrl.currentPursuits" value="{{pursuit}}">{{pursuit}}</option>
 					</select>
 				</form>
@@ -70,7 +70,7 @@
 			<div class="drop-menu">	
 				<p class="uppercase">Arrange by:</p>
 				<form>
-					<select class="uppercase">
+					<select>
 						<option value="Job Interview Stage">Job Interview Stage</option>
 						<option value="Industry">Industry</option>
 					</select>
@@ -79,18 +79,24 @@
 
 		</header> <!-- end Dashboard #subHeader -->
 
+		<header class="sub-header" ng-show="viewCtrl.viewIsSet(2)">	
+		</header> <!-- end Schedule #subHeader -->
+
 		<header class="sub-header" ng-show="viewCtrl.viewIsSet(3)">	
 		</header> <!-- end Contacts #subHeader -->
 
 		<header class="sub-header" ng-show="viewCtrl.viewIsSet(4)">
 		</header> <!-- end Contacts #subHeader -->
+
+		<header class="sub-header" ng-show="viewCtrl.viewIsSet(5)">	
+		</header> <!-- end Help #subHeader -->
 		
 		<p id="suggested-button" class="uppercase suggested-toggle">Suggested Jobs</p>
 		<aside class="fly-menu hidden">
 			<p class="uppercase suggested-toggle">Suggested Jobs</p>	
 			<section id="sug-jobs">
 				<article class="sug-post shadow" ng-repeat="sugJob in prstsCtrl.suggestedJobs">
-					<div class="co-logo-container"><img class="co-logo" ng-src="{{sugJob.image}}" alt-text="{{sugJob.coName}} Logo" /></div>{{sugJob.coName}}<br />{{sugJob.coLocation}}
+					<div class="co-logo-container"><img class="co-logo" ng-src="{{sugJob.image}}" alt-text="{{sugJob.coName}} Logo" /></div>{{sugJob.coName}}
 					<section class="job-title">{{sugJob.jobTitle}}</section>
 				</article>
 			</section>
@@ -109,7 +115,7 @@
 				<div class="option-wrap" sv-part="category.options">
 					<article class="option shadow" ng-repeat="option in category.options" sv-element ng-mouseenter="hover = true" ng-mouseleave="hover = false">
 						<section class="co-info">
-							<div class="co-logo-container"><img class="co-logo" ng-src="{{option.image}}" alt-text="{{option.coName}} Logo" /></div>{{option.coName}}<br />{{option.coLocation}}
+							<div class="co-logo-container"><img class="co-logo" ng-src="{{option.image}}" alt-text="{{option.coName}} Logo" /></div>{{option.coName}}
 						</section>
 						<section class="job-title">{{option.jobTitle}}</section>
 						<section class="notes" ng-hide="true"><p ng-repeat="note in option.notes">{{note}};<br /></p></section>

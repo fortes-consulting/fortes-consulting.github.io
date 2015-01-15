@@ -105,13 +105,13 @@ sup {
 #primary-nav li {
 	display:inline-block;
 	font-size:1.5em;
-	margin:0.5em;
+	margin:0.5em 0.25em;
 }
 
 #search-box {
 	float:right;
 	margin:1.5em;
-	margin-right:3em;
+	margin-right:2em;
 }
 
 #search-box input {
@@ -135,8 +135,10 @@ h3 {
 
 .sub-header{
 	font-size:1.25em;
-	background-color:#c3c3c3;
+	background-color:#fff;
 	height:3.2em;
+	border-top:2px solid #ececec;
+	border-bottom:1px solid #c3c3c3;
 }
 
 .sub-header > * {
@@ -166,12 +168,18 @@ h3 {
 }
 
 .drop-menu {
-	margin:1em;
+	margin:1em 0.75em;
+	font-family:"Bitter", serif;
 }
 
 .drop-menu > * {
 	display:inline-block;
 	vertical-align:top;
+}
+
+.drop-menu p {
+	font-weight:bold;
+	margin-right:0.25em;
 }
 
 .drop-menu select {
@@ -188,6 +196,8 @@ h3 {
 	background-color:#fff;
 	padding:0.5em 1em;
 	border-bottom-left-radius:5px;
+	border-bottom:1px solid #ececec;
+	border-left:1px solid #ececec;
 	box-shadow:1px 2px 6px -4px #8d8d8d;
 	font-weight:bold;
 }
@@ -250,8 +260,8 @@ h3 {
 }
 
 .co-logo-container {
-	width:35px;
-	height:35px;
+	width:20px;
+	height:20px;
 	display:inline-block;
 	float:left;
 	position:relative;
@@ -261,9 +271,9 @@ h3 {
 
 .co-logo {
 	display:block;
-	width:35px;
+	width:20px;
 	height:auto;
-	max-height:35px;
+	max-height:20px;
 	margin:auto;
 	position:absolute;
 	top:0;
@@ -277,12 +287,13 @@ h3 {
 }
 
 main {
-	height:calc(100% - 96px);
-	height:-o-calc(100% - 96px); /* opera */
-	height:-webkit-calc(100% - 96px); /* chrome, safari */
-	height:-moz-calc(100% - 96px); /* firefox */
+	height:calc(100% - 100px);
+	height:-o-calc(100% - 100px); /* opera */
+	height:-webkit-calc(100% - 100px); /* chrome, safari */
+	height:-moz-calc(100% - 100px); /* firefox */
 	background-color:#f5f5f5;
 	overflow-y:auto;
+	border-top:1px solid #d8d8bf;
 }
 
 #category-wrap {
@@ -300,7 +311,7 @@ main {
 	height:-webkit-calc(100% - 2em); /* chrome, safari */
 	height:-moz-calc(100% - 2em); /* firefox */
 	display:inline-block;
-	background-color:#c3c3c3;
+	background-color:#d8d8bf;
 }
 
 .category:first-child {
@@ -333,7 +344,7 @@ h2 {
 	font-size:1.5em;
 }
 
-.sug-post, .option. .category {
+.sug-post, .option {
 	border:1px solid #ababab;
 }
 
